@@ -1,0 +1,41 @@
+[
+    {
+        "id": "sultanzain",
+        "name": {
+            "en": "Sultan Zain",
+            "ar": "سلطان زين",
+            "ur": "سلطان زین",
+            "bn": "সুলতান জাইন"
+        },
+        "role": {
+            "en": "Developer",
+            "ar": "مطور",
+            "ur": "ڈویلپر",
+            "bn": "ডেভেলপার"
+        },
+        "avatar": "https://github.com/SultanZain.png",
+        "social": {
+            "github": "https://github.com/SultanZain"
+        }
+    },
+    {
+        "id": "tanim1993",
+        "name": {
+            "en": "Khaled Bin Showkot Tanim",
+            "ar": "خالد بن شوكت تنيم",
+            "ur": "خالد بن شوکت تنیم",
+            "bn": "খালেদ বিন শওকত তানিম"
+        },
+        "role": {
+            "en": "Bengali Translator",
+            "ar": "مترجم بنغالي",
+            "ur": "بنگالی مترجم",
+            "bn": "বাংলা অনুবাদক"
+        },
+        "avatar": "https://github.com/Tanim1993.png",
+        "social": {
+            "github": "https://github.com/Tanim1993",
+            "linkedin": "https://linkedin.com/in/Khaled-Tanim"
+        }
+    }
+]
