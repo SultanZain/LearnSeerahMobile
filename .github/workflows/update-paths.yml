@@ -58,13 +58,13 @@ jobs:
       - name: Check for Changes
         id: check_changes
         run: |
-          # Check for staged or unstaged changes
-          if git diff --quiet && git diff --cached --quiet; then
-            echo "No changes detected"
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-          else
+          # Check for any changes, including untracked files
+          if [ -n "$(git status --porcelain)" ]; then
             echo "Changes detected"
             echo "has_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "No changes detected"
+            echo "has_changes=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Generate GitHub App token
@@ -82,6 +82,11 @@ jobs:
         run: |
           git config user.name "LearnSeerah Bot"
           git config user.email "learnseerah[bot]@users.noreply.github.com"
-          git add paths/*
-          git commit -m "Update paths/{locale}.json [Skip CI]" || echo "No changes"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+          # Stage all files under paths/ recursively, if they exist
+          if [ -d paths ]; then
+            git add paths
+            git commit -m "Update paths/{locale}.json [Skip CI]" || echo "No changes to commit"
+            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+          else
+            echo "No paths/ folder to commit"
+          fi
